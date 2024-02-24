@@ -1,0 +1,26 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="helloService" class="com.kodtodya.practice.service.HelloService">
+        <!-- property injection-->
+        <property name="name" value="Amit"/>
+        <property name="address" ref="address"/>
+    </bean>
+
+    <bean id="address" class="com.kodtodya.practice.model.Address">
+        <!-- constructor injection-->
+        <constructor-arg ref="city"/>
+        <!-- <property name="city" ref="city" />-->
+        <!--        <constructor-arg>-->
+        <!--            <ref bean="city"></ref>-->
+        <!--        </constructor-arg>-->
+    </bean>
+
+    <!--    setter injection-->
+    <bean id="city" class="com.kodtodya.practice.model.City">
+        <property name="name" value="Pune"/>
+    </bean>
+
+</beans>
