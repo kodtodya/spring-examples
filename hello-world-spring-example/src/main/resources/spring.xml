@@ -21,6 +21,7 @@
     <!--    setter injection-->
     <bean id="city" class="com.kodtodya.practice.model.City">
         <property name="name" value="Pune"/>
+        <!--<constructor-arg name="name" value="Pune"/>-->
     </bean>
 
 </beans>
