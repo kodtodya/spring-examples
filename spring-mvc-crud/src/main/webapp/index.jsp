@@ -47,8 +47,8 @@
 <body>
     <div class="container">
         <h1>Employee Management</h1>
-        <a href="add">Add Employee</a>
-        <a href="view">View Employees</a>
+        <a href="${pageContext.request.contextPath}/add">Add Employee</a>
+        <a href="${pageContext.request.contextPath}/view">View Employees</a>
     </div>
 </body>
 </html>

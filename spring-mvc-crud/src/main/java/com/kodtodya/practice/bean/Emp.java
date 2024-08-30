@@ -1,4 +1,4 @@
-package com.kodtodya.practice.beans;
+package com.kodtodya.practice.bean;
 
 import lombok.Getter;
 import lombok.Setter;

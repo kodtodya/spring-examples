@@ -4,7 +4,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
 
-import com.kodtodya.practice.beans.Emp;
+import com.kodtodya.practice.bean.Emp;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,6 +14,23 @@ public class EmpDao {
 
     public void setTemplate(JdbcTemplate template) {
         this.template = template;
+    }
+
+    public void createTable() {
+        String sql = "CREATE TABLE IF NOT EXISTS emp (" +
+                "id INT AUTO_INCREMENT PRIMARY KEY, " +
+                "name VARCHAR(255) NOT NULL, " +
+                "salary DECIMAL(10, 2) NOT NULL, " +
+                "designation VARCHAR(255) NOT NULL)";
+        template.execute(sql);
+
+        String dataQueries = """
+                            INSERT INTO emp (name, salary, designation) VALUES ('avadhut', 10000.0, 'soft engg');
+                            INSERT INTO emp (name, salary, designation) VALUES ('test user', 7000.0, 'driver');
+                            INSERT INTO emp (name, salary, designation) VALUES ('second test user', 33000.0, 'mechanic');
+                            INSERT INTO emp (name, salary, designation) VALUES ('last user', 87643.0, 'painter');
+                """;
+        template.update(dataQueries);
     }
 
     public int save(Emp p) {

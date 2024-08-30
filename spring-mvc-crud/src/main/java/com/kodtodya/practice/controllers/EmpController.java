@@ -2,7 +2,7 @@ package com.kodtodya.practice.controllers;
 
 import java.util.List;
 
-import com.kodtodya.practice.beans.Emp;
+import com.kodtodya.practice.bean.Emp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,6 +11,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import com.kodtodya.practice.dao.EmpDao;
+import org.springframework.web.servlet.ModelAndView;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 @Controller
 public class EmpController {
@@ -20,10 +24,11 @@ public class EmpController {
     /*It displays a form to input data, here "command" is a reserved request attribute
      *which is used to display object data into form
      */
-    @RequestMapping("/add")
+    @RequestMapping(value = "/add", method = RequestMethod.GET)
     public String showform(Model m) {
         m.addAttribute("command", new Emp());
-        return "add";
+        System.out.println("------------inside add operation--------------");
+        return "AddEmployee";
     }
 
     /*It saves object into database. The @ModelAttribute puts request data
@@ -32,7 +37,7 @@ public class EmpController {
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("emp") Emp emp) {
         dao.save(emp);
-        return "redirect:/view";//will redirect to view request mapping  
+        return "redirect:/view";//will redirect to view request mapping
     }
 
     /* It provides list of employees in model object */
@@ -40,7 +45,7 @@ public class EmpController {
     public String view(Model m) {
         List<Emp> list = dao.getEmployees();
         m.addAttribute("list", list);
-        return "view";
+        return "ViewEmployee";
     }
 
     /* It displays object data into form for the given id.
@@ -49,7 +54,7 @@ public class EmpController {
     public String edit(@PathVariable int id, Model m) {
         Emp emp = dao.getEmpById(id);
         m.addAttribute("command", emp);
-        return "emp-update";
+        return "UpdateEmployee";
     }
 
     /* It updates model object. */
