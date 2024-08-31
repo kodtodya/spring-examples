@@ -10,4 +10,4 @@ public class Emp {
     private String name;
     private float salary;
     private String designation;
-}  
+}
