@@ -1,0 +1,23 @@
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    
+    <bean id="bookingService" class="com.kodtodya.practice.service.BookingService">
+<!--        <property name="booking" ref="booking" />-->
+        <constructor-arg ref="booking"/>
+    </bean>
+
+    <bean id="booking" class="com.kodtodya.practice.model.Booking">
+                <property name="id" value="1" />
+                <property name="price" value="200.00" />
+                <property name="address" ref="address" />
+    </bean>
+
+    <bean id="address" class="com.kodtodya.practice.model.Address">
+        <property name="addressLine1" value="flat no -1, abc apt" />
+        <property name="addressLine2" value="hadapsar" />
+        <property name="city" value="pune" />
+    </bean>
+
+</beans>
