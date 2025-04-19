@@ -10,6 +10,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
  * Hello world!
  */
 public class App {
+    public static ApplicationContext context;
     public static void main(String[] args) {
 //        HelloService helloService = new HelloService();
 //        City city = new City();
@@ -18,9 +19,9 @@ public class App {
 //        helloService.setName("Amit");
 //        helloService.setAddress(address);
 
-        ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+        context = new ClassPathXmlApplicationContext("spring.xml");
 
-        //HelloService helloService = (HelloService) context.getBean("helloService");
+//        HelloService helloService = (HelloService) context.getBean("helloService");
         HelloService helloService = context.getBean("helloService", HelloService.class);
 
         helloService.sayHello();

@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HelloController {
     @RequestMapping("/")
     public String display() {
+        System.out.println("---------------inside controller-------------");
         System.out.println("inside the display()");
         return "index";
     }

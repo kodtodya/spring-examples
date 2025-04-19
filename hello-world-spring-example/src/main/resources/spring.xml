@@ -11,17 +11,18 @@
 
     <bean id="address" class="com.kodtodya.practice.model.Address">
         <!-- constructor injection-->
-        <constructor-arg ref="city"/>
-        <!-- <property name="city" ref="city" />-->
-        <!--        <constructor-arg>-->
-        <!--            <ref bean="city"></ref>-->
-        <!--        </constructor-arg>-->
+        <constructor-arg  name="city" ref="city"/>
+        <constructor-arg  name="houseNo" value="1001"/>
+<!--         <property name="city" ref="city" />-->
+<!--                <constructor-arg>-->
+<!--                    <ref bean="city"/>-->
+<!--                </constructor-arg>-->
     </bean>
 
     <!--    setter injection-->
     <bean id="city" class="com.kodtodya.practice.model.City">
         <property name="name" value="Pune"/>
-        <!--<constructor-arg name="name" value="Pune"/>-->
+<!--        <constructor-arg name="name" value="Pune"/>-->
     </bean>
 
 </beans>
